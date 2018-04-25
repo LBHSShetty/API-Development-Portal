@@ -1,0 +1,1579 @@
+---
+swagger: '2.0'
+info:
+  version: v1
+  title: HackneyAPI
+basePath: "/"
+paths:
+  "/v1/AccountPaymentAgreement":
+    get:
+      tags:
+      - AccountPaymentAgreement
+      operationId: V1AccountPaymentAgreementGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: TagRef
+        in: query
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/v1/Accounts/VerifyHousingAccountLoginDetail":
+    get:
+      tags:
+      - Accounts
+      summary: Verify Housing Account Details by Payment Reference and postcode.
+      operationId: V1AccountsVerifyHousingAccountLoginDetailGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: parisReference
+        in: query
+        description: Payment reference number for Account
+        required: false
+        type: string
+      - name: postcode
+        in: query
+        description: postcode for the Property
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/v1/Accounts/AccountDetailsByPaymentorTagReference":
+    get:
+      tags:
+      - Accounts
+      summary: Verify Housing Account Details by Payment Reference and postcode.
+      operationId: V1AccountsAccountDetailsByPaymentorTagReferenceGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: referencenumber
+        in: query
+        description: Payment reference number for Account
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/v1/Accounts/GetDebItemsByTagReference":
+    get:
+      tags:
+      - Accounts
+      operationId: V1AccountsGetDebItemsByTagReferenceGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: tagReference
+        in: query
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/v1/Accounts/GetAccountsAndNotifications":
+    get:
+      tags:
+      - Accounts
+      summary: Get all accounts that have notifications on.
+      operationId: V1AccountsGetAccountsAndNotificationsGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: type
+        in: query
+        description: 1 - Rent account; 2 - Lease account
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/v1/Accounts/GetTagReferencenumber":
+    get:
+      tags:
+      - Accounts
+      summary: GetTagReferencenumber.
+      operationId: V1AccountsGetTagReferencenumberGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: hackneyhomesId
+        in: query
+        description: Payment reference number for Account
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/v1/work_orders/{workOrderReference}/available_appointments":
+    get:
+      tags:
+      - Appointments
+      operationId: V1Work_ordersByWorkOrderReferenceAvailable_appointmentsGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: workOrderReference
+        in: path
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/v1/work_orders/{workOrderReference}/Appointments":
+    get:
+      tags:
+      - Appointments
+      operationId: V1Work_ordersByWorkOrderReferenceAppointmentsGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: workOrderReference
+        in: path
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+    post:
+      tags:
+      - Appointments
+      operationId: V1Work_ordersByWorkOrderReferenceAppointmentsPost
+      consumes:
+      - application/json
+      - text/json
+      - application/json-patch+json
+      produces: []
+      parameters:
+      - name: workOrderReference
+        in: path
+        required: true
+        type: string
+      - name: request
+        in: body
+        required: false
+        schema:
+          "$ref": "#/definitions/ScheduleAppointmentRequest"
+      responses:
+        '200':
+          description: Success
+  "/v1/AreaPatch/GetAreaPatch":
+    get:
+      tags:
+      - AreaPatch
+      operationId: V1AreaPatchGetAreaPatchGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: postcode
+        in: query
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/v1/AreaPatch/GetAllOfficersPerArea":
+    get:
+      tags:
+      - AreaPatch
+      operationId: V1AreaPatchGetAllOfficersPerAreaGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: areaId
+        in: query
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/v1/AreaPatch/UpdateOfficerPatchOrAreaManager":
+    put:
+      tags:
+      - AreaPatch
+      operationId: V1AreaPatchUpdateOfficerPatchOrAreaManagerPut
+      consumes:
+      - application/json
+      - text/json
+      - application/json-patch+json
+      produces: []
+      parameters:
+      - name: officerAreaPatch
+        in: body
+        required: false
+        schema:
+          "$ref": "#/definitions/OfficerAreaPatch"
+      responses:
+        '200':
+          description: Success
+  "/v1/AreaPatch/GetAllUnassignedOfficers":
+    get:
+      tags:
+      - AreaPatch
+      operationId: V1AreaPatchGetAllUnassignedOfficersGet
+      consumes: []
+      produces: []
+      responses:
+        '200':
+          description: Success
+  "/CISearch":
+    get:
+      tags:
+      - CISearch
+      operationId: CISearchGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: firstname
+        in: query
+        required: false
+        type: string
+      - name: surname
+        in: query
+        required: false
+        type: string
+      - name: postcode
+        in: query
+        required: false
+        type: string
+      - name: DOB
+        in: query
+        required: false
+        type: string
+        format: date-time
+      - name: telephone
+        in: query
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/v1/CitizenIndexSearch":
+    get:
+      tags:
+      - CitizenIndexSearch
+      operationId: V1CitizenIndexSearchGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: firstname
+        in: query
+        required: false
+        type: string
+      - name: surname
+        in: query
+        required: false
+        type: string
+      - name: addressline12
+        in: query
+        required: false
+        type: string
+      - name: postcode
+        in: query
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/ContactDetails":
+    get:
+      tags:
+      - ContactDetails
+      operationId: ContactDetailsGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: larn
+        in: query
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/v1/Contacts":
+    put:
+      tags:
+      - Contacts
+      operationId: V1ContactsPut
+      consumes:
+      - application/json
+      - text/json
+      - application/json-patch+json
+      produces: []
+      parameters:
+      - name: contactId
+        in: query
+        required: false
+        type: string
+      - name: contact
+        in: body
+        required: false
+        schema:
+          "$ref": "#/definitions/Contact"
+      responses:
+        '200':
+          description: Success
+    post:
+      tags:
+      - Contacts
+      summary: Creates a new CRM contact
+      operationId: V1ContactsPost
+      consumes:
+      - application/json
+      - text/json
+      - application/json-patch+json
+      produces: []
+      parameters:
+      - name: contact
+        in: body
+        required: false
+        schema:
+          "$ref": "#/definitions/Contact"
+      responses:
+        '200':
+          description: Success
+  "/v1/Contacts/GetCautionaryAlerts":
+    get:
+      tags:
+      - Contacts
+      operationId: V1ContactsGetCautionaryAlertsGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: urpn
+        in: query
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/v1/Contacts/RemoveCautionaryAlerts":
+    post:
+      tags:
+      - Contacts
+      operationId: V1ContactsRemoveCautionaryAlertsPost
+      consumes:
+      - application/json
+      - text/json
+      - application/json-patch+json
+      produces: []
+      parameters:
+      - name: cautionaryAlerts
+        in: body
+        required: false
+        schema:
+          "$ref": "#/definitions/CautionaryAlert"
+      responses:
+        '200':
+          description: Success
+  "/v1/Contacts/CreateCautionaryAlerts":
+    post:
+      tags:
+      - Contacts
+      operationId: V1ContactsCreateCautionaryAlertsPost
+      consumes:
+      - application/json
+      - text/json
+      - application/json-patch+json
+      produces: []
+      parameters:
+      - name: cautionaryAlerts
+        in: body
+        required: false
+        schema:
+          "$ref": "#/definitions/CautionaryAlert"
+      responses:
+        '200':
+          description: Success
+  "/CRMContacts":
+    get:
+      tags:
+      - CRMContacts
+      summary: Gets a CRM Contact with the supplied id.
+      operationId: CRMContactsGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: id
+        in: query
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+    put:
+      tags:
+      - CRMContacts
+      summary: Updates an existing CRM contact with the id supplied
+      operationId: CRMContactsPut
+      consumes:
+      - application/json
+      - text/json
+      - application/json-patch+json
+      produces: []
+      parameters:
+      - name: id
+        in: query
+        required: false
+        type: string
+      - name: contact
+        in: body
+        required: false
+        schema:
+          "$ref": "#/definitions/CRMContact"
+      responses:
+        '200':
+          description: Success
+    post:
+      tags:
+      - CRMContacts
+      summary: Creates a new CRM contact
+      operationId: CRMContactsPost
+      consumes:
+      - application/json
+      - text/json
+      - application/json-patch+json
+      produces: []
+      parameters:
+      - name: contact
+        in: body
+        required: false
+        schema:
+          "$ref": "#/definitions/CRMContact"
+      responses:
+        '200':
+          description: Success
+  "/CRMEnquiryTypes":
+    get:
+      tags:
+      - CRMEnquiryTypes
+      operationId: CRMEnquiryTypesGet
+      consumes: []
+      produces: []
+      responses:
+        '200':
+          description: Success
+  "/CRMHousingEnquiryInteractions":
+    get:
+      tags:
+      - CRMHousingEnquiryInteractions
+      summary: Returns the interaction matching the provided parameter
+      operationId: CRMHousingEnquiryInteractionsGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: id
+        in: query
+        description: Service request id
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+    post:
+      tags:
+      - CRMHousingEnquiryInteractions
+      operationId: CRMHousingEnquiryInteractionsPost
+      consumes:
+      - application/json
+      - text/json
+      - application/json-patch+json
+      produces: []
+      parameters:
+      - name: Interaction
+        in: body
+        required: false
+        schema:
+          "$ref": "#/definitions/CRMHousingEnquiryInteraction"
+      responses:
+        '200':
+          description: Success
+  "/CRMLookups":
+    get:
+      tags:
+      - CRMLookups
+      summary: Function to provide the various pick lists for the user interface
+      operationId: CRMLookupsGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: id
+        in: query
+        description: '0: enquiry office, 1: handling officer, 2: source of enquiry,
+          3: enquiry call type'
+        required: false
+        type: integer
+        format: int32
+      responses:
+        '200':
+          description: Success
+  "/CRMServiceRequests":
+    get:
+      tags:
+      - CRMServiceRequests
+      summary: Returns the service request matching the provided parameter
+      operationId: CRMServiceRequestsGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: id
+        in: query
+        description: Provide either the service request id or the ticket number
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+    post:
+      tags:
+      - CRMServiceRequests
+      operationId: CRMServiceRequestsPost
+      consumes:
+      - application/json
+      - text/json
+      - application/json-patch+json
+      produces: []
+      parameters:
+      - name: ServiceRequest
+        in: body
+        required: false
+        schema:
+          "$ref": "#/definitions/CRMServiceRequest"
+      responses:
+        '200':
+          description: Success
+  "/RequestsByContact":
+    get:
+      tags:
+      - CRMServiceRequests
+      summary: Returns a list of service requests matching the provided parameters.
+        Parameters provided in querystring.
+      operationId: RequestsByContactGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: id
+        in: query
+        description: Contact Id required
+        required: false
+        type: string
+      - name: days
+        in: query
+        description: Number of days optional (defaults to 180 days)
+        required: false
+        type: integer
+        format: int32
+      responses:
+        '200':
+          description: Success
+  "/CustomerInteractions":
+    get:
+      tags:
+      - CustomerInteractions
+      operationId: CustomerInteractionsGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: larn
+        in: query
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/Email":
+    post:
+      tags:
+      - Email
+      summary: Function to send emails
+      operationId: EmailPost
+      consumes:
+      - application/json
+      - text/json
+      - application/json-patch+json
+      produces: []
+      parameters:
+      - name: email
+        in: body
+        description: to, from, subject, message
+        required: false
+        schema:
+          "$ref": "#/definitions/Email"
+      responses:
+        '200':
+          description: Success
+  "/GetCRM365AccessToken":
+    get:
+      tags:
+      - GetCRM365AccessToken
+      summary: Gets a access token for CRM API Call
+      operationId: GetCRM365AccessTokenGet
+      consumes: []
+      produces: []
+      responses:
+        '200':
+          description: Returns AccessToken
+        '400':
+          description: Remote Server Returned Error
+        '401':
+          description: Unauthorised Access
+        '500':
+          description: If any errors are encountered
+  "/v1/Llpg":
+    get:
+      tags:
+      - Llpg
+      summary: Gets a list of addresses for a particular postcode
+      operationId: V1LlpgGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: postcode
+        in: query
+        description: The post code for the addresses being queried
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Returns the list of addresses
+        '400':
+          description: If a post code is not provided
+        '500':
+          description: If any errors are encountered
+  "/v1/Login/AuthenticateNHOfficers":
+    get:
+      tags:
+      - Login
+      operationId: V1LoginAuthenticateNHOfficersGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: username
+        in: query
+        required: false
+        type: string
+      - name: password
+        in: query
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/NCCOfficers/NCCOfficers":
+    get:
+      tags:
+      - NCCOfficers
+      summary: Gives the NCC Estate Office for a given post code
+      operationId: NCCOfficersNCCOfficersGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: postcode
+        in: query
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/NCCOfficers/NCCOfficeByTenancyRef":
+    get:
+      tags:
+      - NCCOfficers
+      summary: Gives the NCC Estate Office for a given tenancy reference number
+      operationId: NCCOfficersNCCOfficeByTenancyRefGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: tenancyRef
+        in: query
+        description: Tenancy reference number
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/NCCOfficers/NCCOfficeByHousingRef":
+    get:
+      tags:
+      - NCCOfficers
+      summary: Gives the NCC Estate Office for a given housing reference number
+      operationId: NCCOfficersNCCOfficeByHousingRefGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: housingRef
+        in: query
+        description: Housing reference number
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/v1/Notifications":
+    get:
+      tags:
+      - Notifications
+      operationId: V1NotificationsGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: tagReference
+        in: query
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+    put:
+      tags:
+      - Notifications
+      operationId: V1NotificationsPut
+      consumes:
+      - application/json
+      - text/json
+      - application/json-patch+json
+      produces: []
+      parameters:
+      - name: notificationId
+        in: query
+        required: false
+        type: string
+      - name: notification
+        in: body
+        required: false
+        schema:
+          "$ref": "#/definitions/Notifications"
+      responses:
+        '200':
+          description: Success
+    post:
+      tags:
+      - Notifications
+      summary: Creates a notification entry in the housing notifications entity
+      operationId: V1NotificationsPost
+      consumes:
+      - application/json
+      - text/json
+      - application/json-patch+json
+      produces: []
+      parameters:
+      - name: notification
+        in: body
+        required: false
+        schema:
+          "$ref": "#/definitions/Notifications"
+      responses:
+        '200':
+          description: Success
+  "/v1/OfficerAccounts/CreateOfficerAccount":
+    post:
+      tags:
+      - OfficerAccounts
+      operationId: V1OfficerAccountsCreateOfficerAccountPost
+      consumes:
+      - application/json
+      - text/json
+      - application/json-patch+json
+      produces: []
+      parameters:
+      - name: estateOfficerAccount
+        in: body
+        required: false
+        schema:
+          "$ref": "#/definitions/EstateOfficerAccount"
+      responses:
+        '200':
+          description: Success
+  "/v1/OfficerAccounts/DisableOfficerAccount":
+    patch:
+      tags:
+      - OfficerAccounts
+      operationId: V1OfficerAccountsDisableOfficerAccountPatch
+      consumes: []
+      produces: []
+      parameters:
+      - name: officerId
+        in: query
+        required: false
+        type: string
+      - name: officerLoginId
+        in: query
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/v1/Properties":
+    get:
+      tags:
+      - Properties
+      summary: Gets a property or properties for a particular postcode
+      operationId: V1PropertiesGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: postcode
+        in: query
+        description: The post code of the propterty being requested
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Returns the list of properties
+        '400':
+          description: If a post code is not provided
+        '500':
+          description: If any errors are encountered
+  "/v1/Properties/{reference}":
+    get:
+      tags:
+      - Properties
+      summary: Gets the details of a property by a given reference number
+      operationId: V1PropertiesByReferenceGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: reference
+        in: path
+        description: The reference number of the requested property
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/PropertyDetails":
+    get:
+      tags:
+      - PropertyDetails
+      operationId: PropertyDetailsGet
+      consumes: []
+      produces:
+      - application/json
+      parameters:
+      - name: postcode
+        in: query
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            "$ref": "#/definitions/HttpResponseMessage"
+  "/RentDetails":
+    get:
+      tags:
+      - RentDetails
+      summary: Returns the rent details for a resident either by their tenancy reference
+        number or housing id
+      operationId: RentDetailsGet
+      consumes: []
+      produces:
+      - application/json
+      parameters:
+      - name: tenancyref
+        in: query
+        description: Tenancy reference number
+        required: false
+        type: string
+      - name: housingid
+        in: query
+        description: Housing Id
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            "$ref": "#/definitions/HttpResponseMessage"
+  "/RentBalance":
+    get:
+      tags:
+      - RentDetails
+      summary: Returns the rent balance for a resident either by their tenancy reference
+        number or housing id
+      operationId: RentBalanceGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: tenancyref
+        in: query
+        description: Tenancy reference number
+        required: false
+        type: string
+      - name: housingid
+        in: query
+        description: Housing Id
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/v1/Repairs":
+    post:
+      tags:
+      - Repairs
+      summary: Creates a repair request
+      operationId: V1RepairsPost
+      consumes:
+      - application/json
+      - text/json
+      - application/json-patch+json
+      produces: []
+      parameters:
+      - name: request
+        in: body
+        required: false
+        schema:
+          "$ref": "#/definitions/RepairRequest"
+      responses:
+        '200':
+          description: A successfully created repair request
+  "/v1/Repairs/{reference}":
+    get:
+      tags:
+      - Repairs
+      operationId: V1RepairsByReferenceGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: reference
+        in: path
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/v1/TenancyManagementInteractions/CreateTenancyManagementInteraction":
+    post:
+      tags:
+      - TenancyManagementInteractions
+      summary: Creates a TenancyManagement request
+      operationId: V1TenancyManagementInteractionsCreateTenancyManagementInteractionPost
+      consumes:
+      - application/json
+      - text/json
+      - application/json-patch+json
+      produces: []
+      parameters:
+      - name: interaction
+        in: body
+        required: false
+        schema:
+          "$ref": "#/definitions/TenancyManagement"
+      responses:
+        '200':
+          description: A successfully created repair request
+  "/v1/TenancyManagementInteractions/ServiceRequest":
+    post:
+      tags:
+      - TenancyManagementInteractions
+      summary: Creates a Service request
+      operationId: V1TenancyManagementInteractionsServiceRequestPost
+      consumes:
+      - application/json
+      - text/json
+      - application/json-patch+json
+      produces: []
+      parameters:
+      - name: serviceRequest
+        in: body
+        required: false
+        schema:
+          "$ref": "#/definitions/CRMServiceRequest"
+      responses:
+        '200':
+          description: A successfully created repair request
+  "/v1/TenancyManagementInteractions":
+    get:
+      tags:
+      - TenancyManagementInteractions
+      operationId: V1TenancyManagementInteractionsGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: contactId
+        in: query
+        required: false
+        type: string
+      - name: personType
+        in: query
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+    patch:
+      tags:
+      - TenancyManagementInteractions
+      operationId: V1TenancyManagementInteractionsPatch
+      consumes:
+      - application/json
+      - text/json
+      - application/json-patch+json
+      produces: []
+      parameters:
+      - name: tenancyInteraction
+        in: body
+        required: false
+        schema:
+          "$ref": "#/definitions/TenancyManagement"
+      responses:
+        '200':
+          description: Success
+  "/v1/TenancyManagementInteractions/GetAreaTrayIneractions":
+    get:
+      tags:
+      - TenancyManagementInteractions
+      summary: Get group Tray
+      operationId: V1TenancyManagementInteractionsGetAreaTrayIneractionsGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: OfficeId
+        in: query
+        description: OfficeId of the Group Tray
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/v1/TenancyManagementInteractions/TransferCall":
+    put:
+      tags:
+      - TenancyManagementInteractions
+      summary: TransferCallToAreaAndPatch
+      operationId: V1TenancyManagementInteractionsTransferCallPut
+      consumes:
+      - application/json
+      - text/json
+      - application/json-patch+json
+      produces: []
+      parameters:
+      - name: tenancyInteraction
+        in: body
+        description: List Of interaction or call to be updated/tranferred
+        required: false
+        schema:
+          "$ref": "#/definitions/TenancyManagement"
+      responses:
+        '200':
+          description: Success
+  "/v1/Transactions":
+    get:
+      tags:
+      - Transactions
+      operationId: V1TransactionsGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: tagReference
+        in: query
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/Users":
+    get:
+      tags:
+      - Users
+      summary: Returns the CRM user id for the specified active directory username
+      operationId: UsersGet
+      consumes: []
+      produces: []
+      parameters:
+      - name: userid
+        in: query
+        description: The local ID of the logged in user
+        required: false
+        type: string
+      responses:
+        '200':
+          description: Success
+  "/Values":
+    get:
+      tags:
+      - Values
+      operationId: ValuesGet
+      consumes: []
+      produces: []
+      responses:
+        '200':
+          description: Success
+definitions:
+  ScheduleAppointmentRequest:
+    type: object
+    properties:
+      beginDate:
+        type: string
+      endDate:
+        type: string
+  OfficerAreaPatch:
+    type: object
+    properties:
+      officerId:
+        type: string
+      patchId:
+        type: string
+      areaManagerId:
+        type: string
+      isUpdatingPatch:
+        type: boolean
+      updatedByOfficer:
+        type: string
+      deleteExistingRelationship:
+        type: boolean
+  Contact:
+    type: object
+    properties:
+      crMcontactId:
+        format: uuid
+        type: string
+      title:
+        type: string
+      dateOfBirth:
+        format: date-time
+        type: string
+      lastName:
+        type: string
+      firstName:
+        type: string
+      email:
+        type: string
+      address1:
+        type: string
+      address2:
+        type: string
+      address3:
+        type: string
+      city:
+        type: string
+      postCode:
+        type: string
+      telephone1:
+        type: string
+      telephone2:
+        type: string
+      telephone3:
+        type: string
+      larn:
+        type: string
+      housingId:
+        type: string
+      usn:
+        type: string
+      createdByOfficer:
+        type: string
+      updatedByOfficer:
+        type: string
+      uprn:
+        type: string
+      fullAddressSearch:
+        type: string
+      fullAddressDisplay:
+        type: string
+      fullName:
+        type: string
+        readOnly: true
+  CautionaryAlert:
+    type: object
+    properties:
+      cautionaryAlertIds:
+        type: array
+        items:
+          type: string
+      cautionaryAlertType:
+        type: array
+        items:
+          type: string
+      contactId:
+        type: string
+      uprn:
+        type: string
+      cautionaryAlertIsToBeRemoved:
+        type: boolean
+  CRMContact:
+    type: object
+    properties:
+      id:
+        type: string
+      lastName:
+        type: string
+      firstName:
+        type: string
+      email:
+        type: string
+      address1:
+        type: string
+      address2:
+        type: string
+      address3:
+        type: string
+      city:
+        type: string
+      postCode:
+        type: string
+      telephone1:
+        type: string
+      telephone2:
+        type: string
+      telephone3:
+        type: string
+      larn:
+        type: string
+      housingId:
+        type: string
+      usn:
+        type: string
+      createdBy:
+        type: string
+      fullName:
+        type: string
+        readOnly: true
+  CRMHousingEnquiryInteraction:
+    type: object
+    properties:
+      id:
+        type: string
+      contactId:
+        type: string
+      enquiryType:
+        type: string
+      enquiryTypeText:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      nhaOffice:
+        type: string
+      subject:
+        type: string
+      serviceRequestId:
+        type: string
+      postCode:
+        type: string
+      address:
+        type: string
+      telephone:
+        type: string
+      email:
+        type: string
+      adviceGiven:
+        type: string
+      ticketNumber:
+        type: string
+      enquiryOffice:
+        type: string
+      handledBy:
+        type: string
+      enquirySource:
+        type: string
+      createdBy:
+        type: string
+  CRMServiceRequest:
+    type: object
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      description:
+        type: string
+      contactId:
+        type: string
+      parentCaseId:
+        type: string
+      subject:
+        type: string
+      createdDate:
+        type: string
+      enquiryType:
+        type: string
+      ticketNumber:
+        type: string
+      requestCallback:
+        type: boolean
+      transferred:
+        type: boolean
+      createdBy:
+        type: string
+      childRequests:
+        type: array
+        items:
+          "$ref": "#/definitions/CRMServiceRequest"
+  Email:
+    type: object
+    properties:
+      emailTo:
+        type: string
+      emailFrom:
+        type: string
+      emailSubject:
+        type: string
+      emailMessage:
+        type: string
+  Notifications:
+    type: object
+    properties:
+      tagReference:
+        type: string
+      email:
+        type: string
+      mobilePhone:
+        type: string
+      areNotificationsOn:
+        type: boolean
+      accountReference:
+        type: string
+      accountType:
+        format: int32
+        type: integer
+      notificationId:
+        type: string
+  EstateOfficerAccount:
+    type: object
+    properties:
+      officeraccount:
+        "$ref": "#/definitions/OfficerAccount"
+      officerloginaccount:
+        "$ref": "#/definitions/OfficerLoginAccount"
+  OfficerAccount:
+    type: object
+    properties:
+      hackney_firstname:
+        type: string
+      hackney_lastname:
+        type: string
+      hackney_emailaddress:
+        type: string
+      hackney_name:
+        type: string
+        readOnly: true
+  OfficerLoginAccount:
+    type: object
+    properties:
+      hackney_username:
+        type: string
+      hackney_password:
+        type: string
+  HttpResponseMessage:
+    type: object
+    properties:
+      version:
+        "$ref": "#/definitions/Version"
+      content:
+        "$ref": "#/definitions/HttpContent"
+      statusCode:
+        format: int32
+        enum:
+        - 100
+        - 101
+        - 200
+        - 201
+        - 202
+        - 203
+        - 204
+        - 205
+        - 206
+        - 300
+        - 300
+        - 301
+        - 301
+        - 302
+        - 302
+        - 303
+        - 303
+        - 304
+        - 305
+        - 306
+        - 307
+        - 307
+        - 400
+        - 401
+        - 402
+        - 403
+        - 404
+        - 405
+        - 406
+        - 407
+        - 408
+        - 409
+        - 410
+        - 411
+        - 412
+        - 413
+        - 414
+        - 415
+        - 416
+        - 417
+        - 426
+        - 500
+        - 501
+        - 502
+        - 503
+        - 504
+        - 505
+        type: integer
+      reasonPhrase:
+        type: string
+      headers:
+        type: array
+        items:
+          "$ref": "#/definitions/KeyValuePair[String,IEnumerable[String]]"
+        readOnly: true
+      requestMessage:
+        "$ref": "#/definitions/HttpRequestMessage"
+      isSuccessStatusCode:
+        type: boolean
+        readOnly: true
+  Version:
+    type: object
+    properties:
+      major:
+        format: int32
+        type: integer
+        readOnly: true
+      minor:
+        format: int32
+        type: integer
+        readOnly: true
+      build:
+        format: int32
+        type: integer
+        readOnly: true
+      revision:
+        format: int32
+        type: integer
+        readOnly: true
+      majorRevision:
+        format: int32
+        type: integer
+        readOnly: true
+      minorRevision:
+        format: int32
+        type: integer
+        readOnly: true
+  HttpContent:
+    type: object
+    properties:
+      headers:
+        type: array
+        items:
+          "$ref": "#/definitions/KeyValuePair[String,IEnumerable[String]]"
+        readOnly: true
+  KeyValuePair[String,IEnumerable[String]]:
+    type: object
+    properties:
+      key:
+        type: string
+        readOnly: true
+      value:
+        type: array
+        items:
+          type: string
+        readOnly: true
+  HttpRequestMessage:
+    type: object
+    properties:
+      version:
+        "$ref": "#/definitions/Version"
+      content:
+        "$ref": "#/definitions/HttpContent"
+      method:
+        "$ref": "#/definitions/HttpMethod"
+      requestUri:
+        type: string
+      headers:
+        type: array
+        items:
+          "$ref": "#/definitions/KeyValuePair[String,IEnumerable[String]]"
+        readOnly: true
+      properties:
+        type: object
+        additionalProperties:
+          type: object
+        readOnly: true
+  HttpMethod:
+    type: object
+    properties:
+      method:
+        type: string
+        readOnly: true
+  RepairRequest:
+    type: object
+    properties:
+      priority:
+        type: string
+      propertyReference:
+        type: string
+      problemDescription:
+        type: string
+      contact:
+        "$ref": "#/definitions/RepairRequestContact"
+      workOrders:
+        type: array
+        items:
+          "$ref": "#/definitions/WorkOrder"
+  RepairRequestContact:
+    type: object
+    properties:
+      name:
+        type: string
+      telephoneNumber:
+        type: string
+      emailAddress:
+        type: string
+      callbackTime:
+        type: string
+  WorkOrder:
+    type: object
+    properties:
+      sorCode:
+        type: string
+      supplierRef:
+        type: string
+  TenancyManagement:
+    type: object
+    properties:
+      interactionId:
+        type: string
+      contactId:
+        type: string
+      enquirySubject:
+        type: string
+      estateOfficerId:
+        type: string
+      subject:
+        type: string
+      adviceGiven:
+        type: string
+      estateOffice:
+        type: string
+      source:
+        type: string
+      natureofEnquiry:
+        type: string
+      estateOfficerName:
+        type: string
+      officerPatchId:
+        type: string
+      areaName:
+        type: string
+      managerId:
+        type: string
+      assignedToPatch:
+        type: boolean
+      assignedToManager:
+        type: boolean
+      transferred:
+        type: boolean
+      serviceRequest:
+        "$ref": "#/definitions/CRMServiceRequest"
+      status:
+        format: int32
+        type: integer
+securityDefinitions: {}

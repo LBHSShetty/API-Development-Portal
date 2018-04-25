@@ -1,0 +1,93 @@
+swagger: '2.0'
+info:
+  version: v1
+  title: Hackney Addresses API
+paths:
+  /v1/Addresses:
+    get:
+      tags:
+        - Addresses
+      summary: Search property details.
+      operationId: V1AddressesGet
+      consumes: []
+      produces: []
+      parameters:
+        - name: Postcode
+          in: query
+          description: "Full or partial post code. \r\n            Acceptable inputs: 'E8 2HH', 'E8', 'E8 2', 'e82hh', 'e82'."
+          required: false
+          type: string
+        - name: USRN
+          in: query
+          description: USRN.
+          required: false
+          type: string
+        - name: UPRN
+          in: query
+          description: UPRN.
+          required: false
+          type: string
+        - name: PropertyClass
+          in: query
+          description: "Primary usage of the property. \r\n            Accepted Values: 'Commercial', 'Features', 'Land', 'Object of Interest', 'Parent Shell', 'Residential', 'Military', 'Dual Use', 'Unclassified'."
+          required: false
+          type: string
+          enum:
+            - Residential
+            - ObjectOfInterest
+            - Land
+            - Features
+            - Unclassified
+            - ParentShell
+            - Commercial
+        - name: PropertyClassCode
+          in: query
+          description: "Code specifying usage of the property at a more granular level.\r\n            For details see: <a href=\"https://www.geoplace.co.uk/documents/10181/38204/Appendix+C+-+Classifications/\" target=\"_blank\">Geoplace classifications</a>. \r\n            Acceptable inputs: 'RD07', 'RD', 'R', 'rd07, 'rd 2'."
+          required: false
+          type: string
+        - name: AddressStatus
+          in: query
+          description: "Status of address in the address lifecycle.\r\n           Accepted Values: 'Approved Preferred', 'Alternative', 'Provisional', 'Historical'.\r\n           Default Value = 'Approved Preferred'."
+          required: true
+          type: string
+          enum:
+            - ApprovedPreferred
+            - Alternative
+            - Historical
+            - Provisional
+            - RejectedInternal
+        - name: Format
+          in: query
+          description: "Addresses can be returned in two different formats.\r\n            For details see: <a href=\"#\" target=\"_new\">Insert Link here</a>.\r\n            Accepted Values: 'Simple', 'Detailed'.\r\n            Default Value = 'Simple'."
+          required: true
+          type: string
+          enum:
+            - Simple
+            - Detailed
+        - name: Gazetteer
+          in: query
+          description: "Search Hackney or National Gazetteer.\r\n            Accepted Values: 'Hackney', 'National', 'Both'.\r\n            Default Value = 'Hackney'.\r\n            'Hackney' is only local to Hackney, 'National' is everything outside of Hackney, and 'Both' searches Hackney and National."
+          required: true
+          type: string
+          enum:
+            - Local
+            - National
+            - Both
+        - name: Limit
+          in: query
+          description: "Return only a maximum n items.\r\n            Default Value = 50."
+          required: false
+          type: integer
+          format: int32
+        - name: Offset
+          in: query
+          description: "Skip the first n items - inclusive.\r\n            Default Value = 0."
+          required: false
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+ 
+definitions: {}
+securityDefinitions: {}
