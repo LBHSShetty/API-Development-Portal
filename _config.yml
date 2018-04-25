@@ -5,3 +5,5 @@ url: "http://jexhson.github.io/jekyll-swagger/" # the base hostname & protocol f
 
 # Build settings
 markdown: kramdown
+
+theme: jekyll-theme-minimal
